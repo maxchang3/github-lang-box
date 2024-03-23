@@ -25,6 +25,7 @@
     "dotenv": "^16.4.5"
   },
   "devDependencies": {
-    "bumpp": "^9.4.0"
+    "bumpp": "^9.4.0",
+    "@octokit/types": "^12.6.0"
   }
 }
