@@ -1,11 +1,15 @@
+# github-lang-box
+
+[![npm](https://img.shields.io/npm/v/github-lang-box)](https://www.npmjs.com/package/github-lang-box)
+
 Fork of [lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box) with some customizations.
 
-* dependencies are updated
-* use `/user/repos` endpoint to get all repos of the user
-* publish to npm, add binary to the use `npx` / `pnpm dlx` command
-* custom `description` options. If not provided, it will use the default description
+* Updated dependencies
+* Published to npm, Added binary for use with `npx` or `pnpm dlx`
+* Custom `description` option. If not provided, it will use the default description
+* Use `/user/repos` endpoint to fetch all repos of the user
 
----
+> **Note**: The `/user/repos` endpoint is used, so the Fine-grained access tokens must have the `metadata:read` permission.
 
 <p align="center">
   <img width="450" src="https://user-images.githubusercontent.com/31800695/138593031-536f9b8c-714c-4c4f-8725-63ea105fcca0.png">
