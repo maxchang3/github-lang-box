@@ -6,6 +6,7 @@ const {
     GH_TOKEN: githubToken,
     GH_USERNAME: githubUsername,
     EXCLUDE: exclude,
+    DESCRIPTION: description,
 } = process.env
 
 const octokit = new Octokit({
@@ -55,7 +56,7 @@ const updateGist = async (lines) => {
     try {
         await octokit.gists.update({
             gist_id: gistId,
-            description: `💻 Programming Language Stats`,
+            description: description || "💻 Programming Language Stats",
             files: {
                 [filename]: {
                     content: lines,
