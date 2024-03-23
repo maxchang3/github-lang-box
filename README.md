@@ -38,14 +38,14 @@ Add environment variables to `.env` file or export them in the shell, then run:
 
 ```bash
 npx github-lang-box
+# or
+# pnpm dlx github-lang-box
 ```
 
-or 
-
-```bash
-pnpm dlx github-lang-box
-```
+Additionally, you can use these commands in your GitHub Actions with a Node.js runtime. Refer to the [this workflow file](.github/workflows/update.yml).
 
 ## Credits
 
 This code was inspired by [@matchai's bird-box](https://github.com/matchai/bird-box).
+
+This is a fork of [@Aveek-Saha's lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box).
