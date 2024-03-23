@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "release": "bumpp && pnpm publish"
   },
   "bin": {
     "github-lang-box": "./index.js"
@@ -23,5 +23,8 @@
   "dependencies": {
     "@octokit/rest": "^20.0.2",
     "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "bumpp": "^9.4.0"
   }
 }
