@@ -1,8 +1,6 @@
-# github-lang-box
-
 > Fork of [lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box) with some customizations.
 
-[![npm](https://img.shields.io/npm/v/github-lang-box)](https://www.npmjs.com/package/github-lang-box)
+# github-lang-box [![npm](https://img.shields.io/npm/v/github-lang-box)](https://www.npmjs.com/package/github-lang-box)
 
 * Updated dependencies
 * Published to npm, Added binary for use with `npx` or `pnpm dlx`
