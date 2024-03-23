@@ -1,13 +1,12 @@
 > Fork of [lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box) with some customizations.
 
 # github-lang-box [![npm](https://img.shields.io/npm/v/github-lang-box)](https://www.npmjs.com/package/github-lang-box)
-
 * Updated dependencies
 * Published to npm, Added binary for use with `npx` or `pnpm dlx`
-* Custom `description` option.
 * Use `/user/repos` endpoint to fetch all repos of the user (including private repos)
+* Custom `description` (Add `DESCRIPTION` environment variable, if not provided, the default description is used.)
 
-> **Note**: The `/user/repos` endpoint is used, so the Fine-grained access tokens must have the `metadata:read` permission.
+> **Note**: Due to the use of `/user/repos` endpoint, the Fine-grained access tokens must have the `metadata:read` permission.
 
 --- 
 
