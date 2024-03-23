@@ -1,23 +1,27 @@
 {
-  "name": "lang-stats-box",
+  "type": "module",
+  "name": "github-lang-box",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "github-lang-box": "./index.js"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Aveek-Saha/lang-stats-box.git"
+    "url": "git+https://github.com/maxchang3/github-lang-box.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Aveek-Saha/lang-stats-box/issues"
+    "url": "https://github.com/maxchang3/github-lang-box/issues"
   },
-  "homepage": "https://github.com/Aveek-Saha/lang-stats-box#readme",
+  "homepage": "https://github.com/maxchang3/github-lang-box#readme",
   "dependencies": {
-    "@octokit/rest": "^18.12.0",
-    "dotenv": "^10.0.0"
+    "@octokit/rest": "^20.0.2",
+    "dotenv": "^16.4.5"
   }
 }

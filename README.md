@@ -1,3 +1,12 @@
+Fork of [lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box) with some customizations.
+
+* dependencies are updated
+* use `/user/repos` endpoint to get all repos of the user
+* add binary to the use `npx` / `pnpm dlx` command
+* publish to npm
+
+---
+
 <p align="center">
   <img width="450" src="https://user-images.githubusercontent.com/31800695/138593031-536f9b8c-714c-4c4f-8725-63ea105fcca0.png">
   <h3 align="center">lang-stats-box</h3>
@@ -21,9 +30,10 @@
 1. Go to the repo **Settings > Secrets**
 1. Add the following environment variables:
    - **GH_TOKEN:** The GitHub access token generated above.
-   - **GIST_ID:** The ID portion from your gist url: <br>`https://gist.github.com/Aveek-Saha/`**`8335e85451541072dd25fda601129f7d`**.
+   - **GIST_ID:** The ID portion from your gist url: <br> `https://gist.github.com/Aveek-Saha/` **`8335e85451541072dd25fda601129f7d`**.
    - **GH_USERNAME:** Your `GitHub` account username.
-   - **EXCLUDE:** A comma separated list of languages you want to exclude from the gist. <br> Eg: *Jupyter Notebook,CSS,TeX,PHP*
+   - **EXCLUDE:** A comma separated list of languages you want to exclude from the gist. <br> Eg: *Jupyter Notebook, CSS, TeX, PHP*
 
 ## Credits
+
 This code was inspired by [@matchai's bird-box](https://github.com/matchai/bird-box).
