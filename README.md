@@ -2,8 +2,8 @@ Fork of [lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box) with some
 
 * dependencies are updated
 * use `/user/repos` endpoint to get all repos of the user
-* add binary to the use `npx` / `pnpm dlx` command
-* publish to npm
+* publish to npm, add binary to the use `npx` / `pnpm dlx` command
+* custom `description` options. If not provided, it will use the default description
 
 ---
 
