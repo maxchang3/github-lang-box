@@ -4,9 +4,8 @@ on:
   schedule:
     - cron: "0 0 * * *"
 jobs:
-  spotify-box:
+  language-box:
     runs-on: ubuntu-latest
-    steps:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
