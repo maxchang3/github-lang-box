@@ -23,7 +23,7 @@ Fork of [lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box) with some
 
 ### Project setup
 
-1. Copy [this workflow file](.github/workflows/update.yml) to your repo. 
+1. Copy [this workflow file](./action.yml) to your repo's `.github/workflows` directory. 
 2. Go to the repo **Settings > Secrets**
 3. Add the following environment variables:
    - **GH_TOKEN:** The GitHub access token generated above.
@@ -42,7 +42,7 @@ npx github-lang-box
 # pnpm dlx github-lang-box
 ```
 
-Additionally, you can use these commands in your GitHub Actions with a Node.js runtime. Refer to the [this workflow file](.github/workflows/update.yml).
+Additionally, you can use these commands in your GitHub Actions with a Node.js runtime. Refer to the [this workflow file](./action.yml).
 
 ## Credits
 
