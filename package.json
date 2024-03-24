@@ -2,7 +2,7 @@
   "type": "module",
   "name": "github-lang-box",
   "version": "1.0.2",
-  "description": "",
+  "description": "Update a pinned gist to show your most used programming languages",
   "main": "index.js",
   "scripts": {
     "release": "bumpp && pnpm publish"
@@ -14,7 +14,6 @@
     "type": "git",
     "url": "git+https://github.com/maxchang3/github-lang-box.git"
   },
-  "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/maxchang3/github-lang-box/issues"
