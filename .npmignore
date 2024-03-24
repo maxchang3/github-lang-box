@@ -1,3 +1,4 @@
+.env
+.github
 action.yml
 renovate.json
-
