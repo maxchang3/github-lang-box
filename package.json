@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "github-lang-box",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Update a pinned gist to show your most used programming languages",
   "main": "index.js",
   "scripts": {
