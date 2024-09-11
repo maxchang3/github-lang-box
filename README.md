@@ -30,6 +30,7 @@ Fork of [lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box) with some
    - **GIST_ID:** The ID portion from your gist url: <br> `https://gist.github.com/Aveek-Saha/` **`8335e85451541072dd25fda601129f7d`**.
    - **GH_USERNAME:** Your `GitHub` account username.
    - **EXCLUDE:** A comma separated list of languages you want to exclude from the gist. <br> Eg: *Jupyter Notebook, CSS, TeX, PHP*
+   - **EXCLUDE_REPO**: A comma separated list of repositories you want to exclude from the gist. <br> Eg: *username/repo1, username/repo2*
    - **DESCRIPTION:** A custom description for the gist.
 
 ### Use as a CLI
