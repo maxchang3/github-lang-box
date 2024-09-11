@@ -16,7 +16,7 @@ import { Octokit } from "@octokit/rest"
  */
 
 const {
-    GIST_ID: gistId, components,
+    GIST_ID: gistId,
     GH_TOKEN: githubToken,
     GH_USERNAME: githubUsername,
     EXCLUDE: exclude,
