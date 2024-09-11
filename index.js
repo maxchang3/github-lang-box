@@ -20,6 +20,7 @@ const {
     GH_TOKEN: githubToken,
     GH_USERNAME: githubUsername,
     EXCLUDE: exclude,
+    EXCLUDE_REPO: excludeRepo,
     DESCRIPTION: description,
 } = process.env
 
@@ -118,6 +119,7 @@ const updateGist = async (lines) => {
 }
 
 const calculateTotalLanguages = async () => {
+    const excludeRepos = (excludeRepo ?? "").split(",")
     const repos = await octoRequest("GET /user/repos", {
         type: "owner",
         per_page: 100,
@@ -126,7 +128,11 @@ const calculateTotalLanguages = async () => {
     })
     /** @type {Record<string, number>} */
     const langTotal = {}
-    const reposTotalLanguages = await Promise.all(repos.data.map((repo) => getRepoLanguage(repo)))
+    const reposTotalLanguages = await Promise.all(
+        repos.data
+            .filter((repo) => !excludeRepos.includes(repo.full_name))
+            .map((repo) => getRepoLanguage(repo))
+    )
     reposTotalLanguages.forEach((lang) => {
         let keys = Object.keys(lang)
         keys.map((x) => {
