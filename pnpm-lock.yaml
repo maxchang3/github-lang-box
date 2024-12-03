@@ -13,7 +13,7 @@ importers:
         version: 21.0.2
       dotenv:
         specifier: ^16.4.5
-        version: 16.4.5
+        version: 16.4.6
     devDependencies:
       '@octokit/types':
         specifier: ^13.5.0
@@ -169,8 +169,8 @@ packages:
   destr@2.0.3:
     resolution: {integrity: sha512-2N3BOUU4gYMpTP24s5rF5iP7BDr7uNTCs4ozw3kf/eKfvWSIu93GEBi5m427YoyJoeOzQ5smuu4nNAPGb8idSQ==}
 
-  dotenv@16.4.5:
-    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+  dotenv@16.4.6:
+    resolution: {integrity: sha512-JhcR/+KIjkkjiU8yEpaB/USlzVi3i5whwOjpIRNGi9svKEXZSe+Qp6IWAjFjv+2GViAoDRCUv/QLNziQxsLqDg==}
     engines: {node: '>=12'}
 
   escalade@3.1.2:
@@ -534,7 +534,7 @@ snapshots:
       chokidar: 3.6.0
       confbox: 0.1.7
       defu: 6.1.4
-      dotenv: 16.4.5
+      dotenv: 16.4.6
       giget: 1.2.3
       jiti: 1.21.6
       mlly: 1.7.1
@@ -580,7 +580,7 @@ snapshots:
 
   destr@2.0.3: {}
 
-  dotenv@16.4.5: {}
+  dotenv@16.4.6: {}
 
   escalade@3.1.2: {}
 
