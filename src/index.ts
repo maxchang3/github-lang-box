@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import type { GetResponseDataTypeFromEndpointMethod } from '@octokit/types'
+import process from 'node:process'
 import { Octokit } from '@octokit/rest'
 import { env } from './env.js'
 
@@ -104,5 +105,9 @@ console.log('Generating stats...')
 const statsLine = (await generateStatsLines(totalLang)).join('\n')
 console.log('Generated stats:')
 console.log(statsLine)
-console.log('Updating gist...')
-await updateGist(statsLine)
+if (process.argv.includes('--dry')) {
+    console.log('Dry run, gist not updated')
+} else {
+    console.log('Updating gist...')
+    await updateGist(statsLine)
+}
