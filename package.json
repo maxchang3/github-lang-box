@@ -20,8 +20,8 @@
     "build": "tsup",
     "dev": "pnpm build --watch --sourcemap",
     "release": "pnpm build && bumpp && pnpm publish",
-    "lint": "eslint --flag unstable_ts_config .",
-    "lint:fix": "eslint --flag unstable_ts_config --fix .",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
