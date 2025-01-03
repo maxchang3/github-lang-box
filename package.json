@@ -1,31 +1,40 @@
 {
-  "type": "module",
   "name": "github-lang-box",
+  "type": "module",
   "version": "1.0.6",
   "description": "Update a pinned gist to show your most used programming languages",
-  "main": "index.js",
-  "scripts": {
-    "release": "bumpp && pnpm publish"
-  },
-  "bin": {
-    "github-lang-box": "./index.js"
-  },
+  "license": "MIT",
+  "homepage": "https://github.com/maxchang3/github-lang-box#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maxchang3/github-lang-box.git"
   },
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/maxchang3/github-lang-box/issues"
   },
-  "homepage": "https://github.com/maxchang3/github-lang-box#readme",
+  "main": "dist/index.js",
+  "bin": {
+    "github-lang-box": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "build:dev": "pnpm build --watch --sourcemap",
+    "dev": "pnpm build:dev && node dist/index.js",
+    "release": "build && bumpp && pnpm publish",
+    "lint": "eslint --flag unstable_ts_config .",
+    "lint:fix": "eslint --flag unstable_ts_config --fix ."
+  },
   "dependencies": {
     "@octokit/rest": "^21.0.2",
     "dotenv": "^16.4.5"
   },
   "devDependencies": {
+    "@maxchang/eslint-config": "^1.0.14",
     "@octokit/types": "^13.5.0",
     "@types/node": "^22.5.4",
-    "bumpp": "^9.5.2"
+    "bumpp": "^9.5.2",
+    "eslint": "^9.17.0",
+    "eslint-plugin-format": "^0.1.3",
+    "tsup": "^8.3.5"
   }
 }

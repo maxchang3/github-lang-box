@@ -1,19 +1,7 @@
 #!/usr/bin/env node
-//@ts-check
 import "dotenv/config"
 import { Octokit } from "@octokit/rest"
-/** @typedef {import("@octokit/types").Endpoints} Endpoints */
-/**
- * @template {keyof Endpoints} T
- * @typedef {Endpoints[T]["parameters"]} OctoParams
- */
-/**
- * @template {keyof Endpoints} T
- * @typedef {Endpoints[T]["response"]} OctoResponse
- */
-/**
- * @typedef {Endpoints["GET /user/repos"]["response"]["data"][0]} OctoRepo
- */
+import type { GetResponseDataTypeFromEndpointMethod } from "@octokit/types"
 
 const {
     GIST_ID: gistId,
@@ -36,44 +24,25 @@ const octokit = new Octokit({
     auth: `token ${githubToken}`,
 })
 
-/**
- * @template {keyof Endpoints} T
- * @param {T} endpoint 
- * @param {OctoParams<T>} options 
- * @returns {Promise<OctoResponse<T>>}
- */
-const octoRequest = async (endpoint, options) =>
-    /** @ts-ignore */
-    octokit.request(endpoint, options)
+type OctoRepo = GetResponseDataTypeFromEndpointMethod<typeof octokit.repos.listForAuthenticatedUser>[number]
 
-/**
- * @param {string} str 
- * @param {number} n 
- */
-const truncate = (str, n) => {
+const truncate = (str: string, n: number) => {
     return str.length > n ? str.substr(0, n - 1) + "…" : str
 }
 
-/**
- * @param {Record<string, number>} langTotal 
- * @returns {Promise<string[]>}s
- */
-const generateStatsLines = async (langTotal) => {
+const generateStatsLines = async (langTotal: Record<string, number>): Promise<string[]> => {
     const exc = (exclude ?? "").split(",")
     const top5 = Object.entries(langTotal)
         .filter((lang) => !exc.includes(lang[0]))
         .sort((a, b) => b[1] - a[1])
     const totalCode = top5.reduce((acc, [_, num]) => acc + num, 0)
-    /** @type {[string, number][]} */
-    const topPercent = top5.map(([a, b]) => [
+    const topPercent: [string, number][] = top5.map(([a, b]) => [
         a, Math.round((b / totalCode) * 10000) / 100,
     ])
-    /** @type {[string, number, number][]} */
-    const numBars = topPercent.map(([a, b]) => [
+    const numBars: [string, number, number][] = topPercent.map(([a, b]) => [
         a, b, Math.ceil((b * 36) / 100),
     ])
-    /** @type {string[]} */
-    const lines = []
+    const lines: string[] = []
     numBars.forEach((lang) => {
         lines.push(
             `${truncate(lang[0] + " ", 12).padStart(12)}${"█".repeat(lang[2]) + "░".repeat(36 - lang[2])
@@ -83,12 +52,8 @@ const generateStatsLines = async (langTotal) => {
     return lines
 }
 
-/**
- * @param {string} lines 
- */
-const updateGist = async (lines) => {
-    /** @type {Awaited<ReturnType<typeof octokit.gists.get>>} */
-    let gist
+const updateGist = async (lines: string) => {
+    let gist: Awaited<ReturnType<typeof octokit.gists.get>>
     try {
         gist = await octokit.gists.get({ gist_id: gistId })
     } catch (error) {
@@ -120,14 +85,13 @@ const updateGist = async (lines) => {
 
 const calculateTotalLanguages = async () => {
     const excludeRepos = (excludeRepo ?? "").split(",")
-    const repos = await octoRequest("GET /user/repos", {
+    const repos = await octokit.repos.listForAuthenticatedUser({
         type: "owner",
         per_page: 100,
         sort: "updated",
         direction: "desc",
     })
-    /** @type {Record<string, number>} */
-    const langTotal = {}
+    const langTotal: Record<string, number> = {}
     const reposTotalLanguages = await Promise.all(
         repos.data
             .filter((repo) => !excludeRepos.includes(repo.full_name))
@@ -143,11 +107,7 @@ const calculateTotalLanguages = async () => {
     return langTotal
 }
 
-/**
- * @param {OctoRepo} repo 
- * @returns 
- */
-const getRepoLanguage = async (repo) => {
+const getRepoLanguage = async (repo: OctoRepo) => {
     if (repo.fork) return {}
     const languages = await octokit.repos.listLanguages({
         owner: githubUsername,

@@ -6,11 +6,12 @@
 
 # github-lang-box [![npm](https://img.shields.io/npm/v/github-lang-box)](https://www.npmjs.com/package/github-lang-box)
 
-Fork of [lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box) with some customizations: 
-  + Updated dependencies
-  + Published to npm, Added binary for use with `npx` or `pnpm dlx`
-  + Use `/user/repos` endpoint to fetch all repos of the user (including private repos)
-  + Custom `description`
+Fork of [lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box) with some customizations:
+
+- Updated dependencies
+- Published to npm, Added binary for use with `npx` or `pnpm dlx`
+- Use `/user/repos` endpoint to fetch all repos of the user (including private repos)
+- Custom `description`
 
 > **Note**: Due to the use of `/user/repos` endpoint, the Fine-grained access tokens must have the `metadata:read` permission.
 
@@ -23,15 +24,15 @@ Fork of [lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box) with some
 
 ### Project setup
 
-1. Copy [this workflow file](./action.yml) to your repo's `.github/workflows` directory. 
+1. Copy [this workflow file](./action.yml) to your repo's `.github/workflows` directory.
 2. Go to the repo **Settings > Secrets**
 3. Add the following environment variables:
-   - **GH_TOKEN:** The GitHub access token generated above.
-   - **GIST_ID:** The ID portion from your gist url: <br> `https://gist.github.com/Aveek-Saha/` **`8335e85451541072dd25fda601129f7d`**.
-   - **GH_USERNAME:** Your `GitHub` account username.
-   - **EXCLUDE:** A comma separated list of languages you want to exclude from the gist. <br> Eg: *Jupyter Notebook, CSS, TeX, PHP*
-   - **EXCLUDE_REPO**: A comma separated list of repositories you want to exclude from the gist. <br> Eg: *username/repo1, username/repo2*
-   - **DESCRIPTION:** A custom description for the gist.
+    - **GH_TOKEN:** The GitHub access token generated above.
+    - **GIST_ID:** The ID portion from your gist url: <br> `https://gist.github.com/Aveek-Saha/` **`8335e85451541072dd25fda601129f7d`**.
+    - **GH_USERNAME:** Your `GitHub` account username.
+    - **EXCLUDE:** A comma separated list of languages you want to exclude from the gist. <br> Eg: _Jupyter Notebook, CSS, TeX, PHP_
+    - **EXCLUDE_REPO**: A comma separated list of repositories you want to exclude from the gist. <br> Eg: _username/repo1, username/repo2_
+    - **DESCRIPTION:** A custom description for the gist.
 
 ### Use as a CLI
 
