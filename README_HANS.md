@@ -11,7 +11,7 @@
 - 更新了依赖，使用 TypeScript 重写
 - 发布到 npm，可作为 CLI 使用（`npx` 或 `pnpx`）
 - 使用 `/user/repos` 接口，可以获取用户的所有仓库（包括私有仓库）
-- 自定义描述（`description）)，排除语言和 _仓库_！
+- 自定义描述（`description`）)，排除语言和仓库！
 
 > **注意**: 由于使用了 `/user/repos` 接口，如果使用「Fine-grained access tokens」必须具有 `metadata:read` 权限。
 
