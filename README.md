@@ -30,13 +30,13 @@ Fork of [lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box) with some
     - **GH_TOKEN:** The GitHub access token generated above.
     - **GIST_ID:** The ID portion from your gist url: <br> `https://gist.github.com/Aveek-Saha/` **`8335e85451541072dd25fda601129f7d`**.
     - **GH_USERNAME:** Your `GitHub` account username.
-    - **EXCLUDE:** A comma separated list of languages you want to exclude from the gist. <br> Eg: _Jupyter Notebook, CSS, TeX, PHP_
-    - **EXCLUDE_REPO**: A comma separated list of repositories you want to exclude from the gist. <br> Eg: _username/repo1, username/repo2_
+    - **EXCLUDE:** A comma-separated list of languages you want to exclude from the gist. <br> Eg: _Jupyter Notebook, CSS, TeX, PHP_
+    - **EXCLUDE_REPO**: A comma-separated list of repositories you want to exclude from the gist. <br> Eg: _username/repo1, username/repo2_
     - **DESCRIPTION:** A custom description for the gist.
 
 ### Use as a CLI
 
-Add environment variables to `.env` file or export them in the shell, then run:
+Add environment variables to the `.env` file or export them in the shell, then run:
 
 ```bash
 npx github-lang-box@1
@@ -44,7 +44,7 @@ npx github-lang-box@1
 # pnpx github-lang-box@1
 ```
 
-Additionally, you can use these commands in your GitHub Actions with a Node.js runtime. Refer to the [this workflow file](./action.yml).
+Additionally, you can use these commands in your GitHub Actions with a Node.js runtime. Please take a look at the [this workflow file](./action.yml).
 
 #### Options
 
