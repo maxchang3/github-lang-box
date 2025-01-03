@@ -22,7 +22,8 @@
     "dev": "pnpm build:dev && node dist/index.js",
     "release": "build && bumpp && pnpm publish",
     "lint": "eslint --flag unstable_ts_config .",
-    "lint:fix": "eslint --flag unstable_ts_config --fix ."
+    "lint:fix": "eslint --flag unstable_ts_config --fix .",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@octokit/rest": "^21.0.2",
