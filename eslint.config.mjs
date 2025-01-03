@@ -5,7 +5,7 @@ export default defineConfig({
     typescript: true,
     javascript: {
         overrides: {
-            "antfu/no-top-level-await": "off"
-        }
-    }
+            'antfu/no-top-level-await': 'off',
+        },
+    },
 })
