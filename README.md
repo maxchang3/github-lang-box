@@ -9,7 +9,7 @@
 Fork of [lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box) with some customizations:
 
 - Updated dependencies, Rewritten in TypeScript
-- Published to npm, Added binary for use with `npx` or `pnpm dlx`
+- Published to npm, Added binary for use with `npx` or `pnpx`
 - Use `/user/repos` endpoint to fetch all repos of the user (including private repos)
 - Custom `description`, exclude languages and _repositories_!
 
