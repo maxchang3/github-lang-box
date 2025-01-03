@@ -1,4 +1,20 @@
+# env
 .env
-.github
+
+# VSCode specific
+.vscode
+
+# Example
 action.yml
+
+# Build
+src
+eslint.config.*
+tsconfig.json
+tsup.config.ts
+
+# Config
+.github
 renovate.json
+.*ignore
+.*rc
