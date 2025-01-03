@@ -12,7 +12,7 @@ const octokit = new Octokit({
 type OctoRepo = GetResponseDataTypeFromEndpointMethod<typeof octokit.repos.listForAuthenticatedUser>[number]
 
 const truncate = (str: string, n: number) => {
-    return str.length > n ? str.substr(0, n - 1) + "…" : str
+    return str.length > n ? str.substring(0, n - 1) + "…" : str
 }
 
 const generateStatsLines = async (langTotal: Record<string, number>): Promise<string[]> => {
