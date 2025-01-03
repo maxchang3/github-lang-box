@@ -40,32 +40,6 @@ const generateStatsLines = async (langTotal: Record<string, number>): Promise<st
     return lines
 }
 
-const updateGist = async (lines: string) => {
-    let gist: Awaited<ReturnType<typeof octokit.gists.get>>
-    try {
-        gist = await octokit.gists.get({ gist_id: GIST_ID })
-    } catch (error) {
-        throw new Error(`Unable to get gist\n${error}`)
-    }
-    const files = gist.data.files
-    if (!files) throw new Error('No files found in the gist')
-    const filename = Object.keys(files)[0]
-    try {
-        await octokit.gists.update({
-            gist_id: GIST_ID,
-            description: DESCRIPTION || '💻 Programming Language Stats',
-            files: {
-                [filename]: {
-                    content: lines,
-                },
-            },
-        })
-    } catch (error) {
-        throw new Error(`Unable to update gist\n${error}`)
-    }
-    console.log('Gist updated successfully!')
-}
-
 const getRepoLanguage = async (repo: OctoRepo) => {
     if (repo.fork) return {}
     const languages = await octokit.repos.listLanguages({
@@ -96,6 +70,32 @@ const calculateTotalLanguages = async () => {
         })
     })
     return langTotal
+}
+
+const updateGist = async (lines: string) => {
+    let gist: Awaited<ReturnType<typeof octokit.gists.get>>
+    try {
+        gist = await octokit.gists.get({ gist_id: GIST_ID })
+    } catch (error) {
+        throw new Error(`Unable to get gist\n${error}`)
+    }
+    const files = gist.data.files
+    if (!files) throw new Error('No files found in the gist')
+    const filename = Object.keys(files)[0]
+    try {
+        await octokit.gists.update({
+            gist_id: GIST_ID,
+            description: DESCRIPTION || '💻 Programming Language Stats',
+            files: {
+                [filename]: {
+                    content: lines,
+                },
+            },
+        })
+    } catch (error) {
+        throw new Error(`Unable to update gist\n${error}`)
+    }
+    console.log('Gist updated successfully!')
 }
 
 console.log('Calculating stats...')
