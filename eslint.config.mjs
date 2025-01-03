@@ -1,5 +1,11 @@
 import defineConfig from '@maxchang/eslint-config'
 
 export default defineConfig({
-    typescript: false,
+    type: 'app',
+    typescript: true,
+    javascript: {
+        overrides: {
+            "antfu/no-top-level-await": "off"
+        }
+    }
 })

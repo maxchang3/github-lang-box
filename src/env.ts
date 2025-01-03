@@ -1,11 +1,13 @@
+import process from 'node:process'
+import { z } from 'zod'
 import 'dotenv/config'
-import { z } from "zod"
 
 const commaSeparatedString = z.string()
     .transform((val) => val
-        .split(",")
-        .map((x) => x.trim())
-    ).default("")
+        .split(',')
+        .map((x) => x.trim()),
+    )
+    .default('')
 
 const envSchema = z.object({
     GIST_ID: z.string(),
