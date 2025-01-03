@@ -41,7 +41,7 @@ Add environment variables to `.env` file or export them in the shell, then run:
 ```bash
 npx github-lang-box@1
 # or
-# pnpm dlx github-lang-box@1
+# pnpx github-lang-box@1
 ```
 
 Additionally, you can use these commands in your GitHub Actions with a Node.js runtime. Refer to the [this workflow file](./action.yml).
