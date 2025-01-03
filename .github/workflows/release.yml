@@ -1,25 +1,45 @@
-name: Release
-
-permissions:
-  contents: write
-
-on:
-  push:
-    tags:
-      - 'v*'
-
-jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - run: npx changelogithub
-        env:
-          GITHUB_TOKEN: ${{secrets.ACCESS_TOKEN}}
+---
+  name: Release
+  
+  on:
+    workflow_dispatch:
+    push:
+      tags:
+        - "v*"
+  
+  jobs:
+    release:
+      name: "Release"
+  
+      permissions:
+        contents: write
+  
+      runs-on: "ubuntu-latest"
+  
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+  
+        - uses: pnpm/action-setup@v4
+          name: Install pnpm
+          id: pnpm-install
+          with:
+            version: 9
+            run_install: true
+  
+        - name: Setup node
+          uses: actions/setup-node@v4
+          with:
+            node-version: 20
+            cache: pnpm
+  
+        - name: Build
+          run: |
+            pnpm build
+  
+        - name: Create Release with Changelog
+          run: pnpx changelogithub
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
