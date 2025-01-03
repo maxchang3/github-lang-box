@@ -44,14 +44,10 @@ const updateGist = async (lines: string) => {
     try {
         gist = await octokit.gists.get({ gist_id: GIST_ID })
     } catch (error) {
-        console.error(`Unable to get gist\n${error}`)
-        return
+        throw new Error(`Unable to get gist\n${error}`)
     }
     const files = gist.data.files
-    if (!files) {
-        console.error('No files found in the gist')
-        return
-    }
+    if (!files) throw new Error('No files found in the gist')
     const filename = Object.keys(files)[0]
     try {
         await octokit.gists.update({
@@ -64,8 +60,7 @@ const updateGist = async (lines: string) => {
             },
         })
     } catch (error) {
-        console.error(`Unable to update gist\n${error}`)
-        return
+        throw new Error(`Unable to update gist\n${error}`)
     }
     console.log('Gist updated successfully!')
 }
