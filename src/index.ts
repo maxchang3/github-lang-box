@@ -1,27 +1,12 @@
 #!/usr/bin/env node
-import "dotenv/config"
 import { Octokit } from "@octokit/rest"
+import { env } from "./env.js"
 import type { GetResponseDataTypeFromEndpointMethod } from "@octokit/types"
 
-const {
-    GIST_ID: gistId,
-    GH_TOKEN: githubToken,
-    GH_USERNAME: githubUsername,
-    EXCLUDE: exclude,
-    EXCLUDE_REPO: excludeRepo,
-    DESCRIPTION: description,
-} = process.env
-
-if (!githubUsername || !githubToken || !gistId) {
-    console.error("Please provide all the required environment variables")
-    if (!githubUsername) console.error("GH_USERNAME is required")
-    if (!githubToken) console.error("GH_TOKEN is required")
-    if (!gistId) console.error("GIST_ID is required")
-    process.exit(1)
-}
+const { GIST_ID, GH_TOKEN, GH_USERNAME, EXCLUDE, EXCLUDE_REPO, DESCRIPTION } = env
 
 const octokit = new Octokit({
-    auth: `token ${githubToken}`,
+    auth: `token ${GH_TOKEN}`,
 })
 
 type OctoRepo = GetResponseDataTypeFromEndpointMethod<typeof octokit.repos.listForAuthenticatedUser>[number]
@@ -31,9 +16,8 @@ const truncate = (str: string, n: number) => {
 }
 
 const generateStatsLines = async (langTotal: Record<string, number>): Promise<string[]> => {
-    const exc = (exclude ?? "").split(",")
     const top5 = Object.entries(langTotal)
-        .filter((lang) => !exc.includes(lang[0]))
+        .filter(([lang]) => !EXCLUDE.includes(lang))
         .sort((a, b) => b[1] - a[1])
     const totalCode = top5.reduce((acc, [_, num]) => acc + num, 0)
     const topPercent: [string, number][] = top5.map(([a, b]) => [
@@ -55,7 +39,7 @@ const generateStatsLines = async (langTotal: Record<string, number>): Promise<st
 const updateGist = async (lines: string) => {
     let gist: Awaited<ReturnType<typeof octokit.gists.get>>
     try {
-        gist = await octokit.gists.get({ gist_id: gistId })
+        gist = await octokit.gists.get({ gist_id: GIST_ID })
     } catch (error) {
         console.error(`Unable to get gist\n${error}`)
         return
@@ -68,8 +52,8 @@ const updateGist = async (lines: string) => {
     const filename = Object.keys(files)[0]
     try {
         await octokit.gists.update({
-            gist_id: gistId,
-            description: description || "💻 Programming Language Stats",
+            gist_id: GIST_ID,
+            description: DESCRIPTION || "💻 Programming Language Stats",
             files: {
                 [filename]: {
                     content: lines,
@@ -84,7 +68,6 @@ const updateGist = async (lines: string) => {
 }
 
 const calculateTotalLanguages = async () => {
-    const excludeRepos = (excludeRepo ?? "").split(",")
     const repos = await octokit.repos.listForAuthenticatedUser({
         type: "owner",
         per_page: 100,
@@ -94,7 +77,7 @@ const calculateTotalLanguages = async () => {
     const langTotal: Record<string, number> = {}
     const reposTotalLanguages = await Promise.all(
         repos.data
-            .filter((repo) => !excludeRepos.includes(repo.full_name))
+            .filter((repo) => !EXCLUDE_REPO.includes(repo.full_name))
             .map((repo) => getRepoLanguage(repo))
     )
     reposTotalLanguages.forEach((lang) => {
@@ -110,7 +93,7 @@ const calculateTotalLanguages = async () => {
 const getRepoLanguage = async (repo: OctoRepo) => {
     if (repo.fork) return {}
     const languages = await octokit.repos.listLanguages({
-        owner: githubUsername,
+        owner: GH_USERNAME,
         repo: repo.name,
     })
     return languages.data
@@ -124,4 +107,4 @@ const statsLine = (await generateStatsLines(totalLang)).join("\n")
 console.log("Generated stats:")
 console.log(statsLine)
 console.log("Updating gist...")
-await updateGist(statsLine)
+// await updateGist(statsLine)
