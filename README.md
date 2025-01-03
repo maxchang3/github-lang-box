@@ -1,3 +1,5 @@
+[简体中文](./README_HANS.md)
+
 <p align="center">
   <img width="450" src="https://user-images.githubusercontent.com/31800695/138593031-536f9b8c-714c-4c4f-8725-63ea105fcca0.png">
   <h3 align="center">github-lang-box</h3>
