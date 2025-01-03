@@ -8,10 +8,10 @@
 
 Fork of [lang-stats-box](https://github.com/Aveek-Saha/lang-stats-box) with some customizations:
 
-- Updated dependencies
-- Published to npm, Added binary for use with `npx` or `pnpm dlx`
-- Use `/user/repos` endpoint to fetch all repos of the user (including private repos)
-- Custom `description`
+* Updated dependencies
+* Published to npm, Added binary for use with `npx` or `pnpm dlx`
+* Use `/user/repos` endpoint to fetch all repos of the user (including private repos)
+* Custom `description`
 
 > **Note**: Due to the use of `/user/repos` endpoint, the Fine-grained access tokens must have the `metadata:read` permission.
 
@@ -45,6 +45,10 @@ npx github-lang-box@1
 ```
 
 Additionally, you can use these commands in your GitHub Actions with a Node.js runtime. Refer to the [this workflow file](./action.yml).
+
+#### Options
+
+* `--dry`: Dry run, only fetch the data and print the output.
 
 ## Credits
 
