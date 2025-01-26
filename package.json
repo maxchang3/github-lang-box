@@ -33,7 +33,7 @@
     "@maxchang/eslint-config": "^1.0.14",
     "@octokit/types": "^13.6.2",
     "@types/node": "^22.10.5",
-    "bumpp": "^9.9.2",
+    "bumpp": "^10.0.0",
     "eslint": "^9.17.0",
     "eslint-plugin-format": "^1.0.0",
     "tsup": "^8.3.5"
