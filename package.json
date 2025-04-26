@@ -1,7 +1,7 @@
 {
   "name": "github-lang-box",
   "type": "module",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0",
   "description": "Update a pinned gist to show your most used programming languages",
   "license": "MIT",
   "homepage": "https://github.com/maxchang3/github-lang-box#readme",
