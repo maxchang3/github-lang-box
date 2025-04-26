@@ -1,0 +1,166 @@
+{
+  "ghost": {},
+  "example-project": {
+    "JavaScript": 15623,
+    "TypeScript": 8742,
+    "CSS": 3217
+  },
+  "react-app": {
+    "JavaScript": 22345,
+    "TypeScript": 17862,
+    "CSS": 5321,
+    "HTML": 2134
+  },
+  "personal-website": {
+    "HTML": 8756,
+    "CSS": 12453,
+    "JavaScript": 5678
+  },
+  "vue-dashboard": {
+    "Vue": 18765,
+    "JavaScript": 8932,
+    "CSS": 6123
+  },
+  "markdown-notes": {
+    "JavaScript": 7843
+  },
+  "python-utils": {
+    "Python": 15432,
+    "Jupyter Notebook": 6789
+  },
+  "code-formatter": {
+    "TypeScript": 9876,
+    "JavaScript": 4321
+  },
+  "typescript-starter": {
+    "TypeScript": 12567
+  },
+  "docker-compose-demo": {
+    "YAML": 2345,
+    "Dockerfile": 1298,
+    "Shell": 876
+  },
+  "eslint-config-custom": {
+    "JavaScript": 3210,
+    "JSON": 1543
+  },
+  "blog-engine": {
+    "TypeScript": 18765,
+    "CSS": 6543,
+    "HTML": 3210
+  },
+  "ai-chat-app": {
+    "TypeScript": 25432,
+    "JavaScript": 12321,
+    "CSS": 8765
+  },
+  "node-api-server": {
+    "JavaScript": 15678,
+    "TypeScript": 9876
+  },
+  "social-network": {
+    "TypeScript": 32109,
+    "CSS": 15432,
+    "HTML": 8765,
+    "JavaScript": 6543
+  },
+  "media-player": {
+    "JavaScript": 18765,
+    "CSS": 9876
+  },
+  "data-visualization": {
+    "JavaScript": 17654,
+    "TypeScript": 12345,
+    "CSS": 7654
+  },
+  "rust-cli-tool": {
+    "Rust": 23456
+  },
+  "desktop-app": {
+    "TypeScript": 21098,
+    "CSS": 8765,
+    "HTML": 4321
+  },
+  "text-analyzer": {
+    "Python": 18765,
+    "Jupyter Notebook": 7654
+  },
+  "learning-kubernetes": {
+    "YAML": 12345,
+    "Shell": 5432
+  },
+  "rust-tutorial": {
+    "Rust": 28765,
+    "Markdown": 5432
+  },
+  "browser-extensions": {
+    "JavaScript": 14325,
+    "CSS": 5678
+  },
+  "code-runner": {
+    "TypeScript": 18754,
+    "Makefile": 6543
+  },
+  "text-tools": {
+    "JavaScript": 10987,
+    "Python": 5432
+  },
+  "config-files": {
+    "JSON": 4321,
+    "YAML": 3210,
+    "TOML": 1234
+  },
+  "game-project": {
+    "TypeScript": 27654,
+    "CSS": 12345,
+    "HTML": 6789
+  },
+  "ui-framework": {
+    "TypeScript": 32109,
+    "CSS": 18765,
+    "HTML": 7654,
+    "JavaScript": 5432
+  },
+  "language-tools": {
+    "TypeScript": 21098,
+    "JavaScript": 15432
+  },
+  "documentation-site": {
+    "Markdown": 15432,
+    "HTML": 8765,
+    "CSS": 5432
+  },
+  "deployment-scripts": {
+    "Shell": 8765,
+    "YAML": 5432,
+    "Python": 3210
+  },
+  "translation-app": {
+    "TypeScript": 19876,
+    "CSS": 7654,
+    "HTML": 3210
+  },
+  "web-tutorials": {
+    "HTML": 12345,
+    "CSS": 9876,
+    "JavaScript": 6789,
+    "Markdown": 5432
+  },
+  "competitive-coding": {
+    "C++": 18765,
+    "Python": 12345,
+    "Java": 7654
+  },
+  "test-framework": {
+    "TypeScript": 23456,
+    "JavaScript": 9876
+  },
+  "file-converter": {
+    "Python": 15432,
+    "JavaScript": 8765
+  },
+  "macos-utils": {
+    "Swift": 19876,
+    "Objective-C": 4321
+  }
+}
