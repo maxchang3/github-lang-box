@@ -2,11 +2,9 @@ import process from 'node:process'
 import { z } from 'zod'
 import 'dotenv/config'
 
-const commaSeparatedString = z.string()
-    .transform((val) => val
-        .split(',')
-        .map((x) => x.trim()),
-    )
+const commaSeparatedString = z
+    .string()
+    .transform((val) => val.split(',').map((x) => x.trim()))
     .default('')
 
 const envSchema = z.object({

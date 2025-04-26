@@ -1,22 +1,27 @@
 #!/usr/bin/env node
-import type { GetResponseDataTypeFromEndpointMethod } from '@octokit/types'
 import process from 'node:process'
 import { Octokit } from '@octokit/rest'
+import type { GetResponseDataTypeFromEndpointMethod } from '@octokit/types'
 import { env } from './env.js'
 
-const { GIST_ID, GH_TOKEN, GH_USERNAME, EXCLUDE, EXCLUDE_REPO, DESCRIPTION } = env
+const { GIST_ID, GH_TOKEN, GH_USERNAME, EXCLUDE, EXCLUDE_REPO, DESCRIPTION } =
+    env
 
 const octokit = new Octokit({
     auth: `token ${GH_TOKEN}`,
 })
 
-type OctoRepo = GetResponseDataTypeFromEndpointMethod<typeof octokit.repos.listForAuthenticatedUser>[number]
+type OctoRepo = GetResponseDataTypeFromEndpointMethod<
+    typeof octokit.repos.listForAuthenticatedUser
+>[number]
 
 const truncate = (str: string, n: number) => {
     return str.length > n ? `${str.substring(0, n - 1)}…` : str
 }
 
-const generateStatsLines = async (langTotal: Record<string, number>): Promise<string[]> => {
+const generateStatsLines = async (
+    langTotal: Record<string, number>
+): Promise<string[]> => {
     const top5 = Object.entries(langTotal)
         .filter(([lang]) => !EXCLUDE.includes(lang))
         .sort((a, b) => b[1] - a[1])
@@ -33,8 +38,9 @@ const generateStatsLines = async (langTotal: Record<string, number>): Promise<st
     const lines: string[] = []
     numBars.forEach((lang) => {
         lines.push(
-            `${truncate(`${lang[0]} `, 12).padStart(12)}${'█'.repeat(lang[2]) + '░'.repeat(36 - lang[2])
-            } ${(`${lang[1].toFixed(2)}%`).padStart(6)}`,
+            `${truncate(`${lang[0]} `, 12).padStart(12)}${
+                '█'.repeat(lang[2]) + '░'.repeat(36 - lang[2])
+            } ${(`${lang[1].toFixed(2)}%`).padStart(6)}`
         )
     })
     return lines
@@ -60,7 +66,7 @@ const calculateTotalLanguages = async () => {
     const reposTotalLanguages = await Promise.all(
         repos.data
             .filter((repo) => !EXCLUDE_REPO.includes(repo.full_name))
-            .map((repo) => getRepoLanguage(repo)),
+            .map((repo) => getRepoLanguage(repo))
     )
     reposTotalLanguages.forEach((lang) => {
         const keys = Object.keys(lang)
