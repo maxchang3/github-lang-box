@@ -34,7 +34,16 @@
           with:
             node-version: 20
             cache: pnpm
+ 
+        - name: Typecheck
+          run: pnpm typecheck
   
+        - name: Lint
+          run: pnpm lint
+        
+        - name: Test
+          run: pnpm test
+    
         - name: Build
           run: |
             pnpm build
