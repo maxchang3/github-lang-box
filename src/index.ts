@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import process from 'node:process'
 import { Octokit } from '@octokit/rest'
 import type { GetResponseDataTypeFromEndpointMethod } from '@octokit/types'
 import { env } from './env.js'
@@ -15,9 +14,8 @@ type OctoRepo = GetResponseDataTypeFromEndpointMethod<
     typeof octokit.repos.listForAuthenticatedUser
 >[number]
 
-const truncate = (str: string, n: number) => {
-    return str.length > n ? `${str.substring(0, n - 1)}…` : str
-}
+const truncate = (str: string, n: number) =>
+    str.length > n ? `${str.substring(0, n - 1)}…` : str
 
 const generateStatsLines = async (
     langTotal: Record<string, number>
@@ -25,24 +23,34 @@ const generateStatsLines = async (
     const top5 = Object.entries(langTotal)
         .filter(([lang]) => !EXCLUDE.includes(lang))
         .sort((a, b) => b[1] - a[1])
+
     const totalCode = top5.reduce((acc, [_, num]) => acc + num, 0)
-    const topPercent: [string, number][] = top5.map(([a, b]) => [
-        a,
-        Math.round((b / totalCode) * 10000) / 100,
-    ])
-    const numBars: [string, number, number][] = topPercent.map(([a, b]) => [
-        a,
-        b,
-        Math.ceil((b * 36) / 100),
-    ])
-    const lines: string[] = []
-    numBars.forEach((lang) => {
-        lines.push(
-            `${truncate(`${lang[0]} `, 12).padStart(12)}${
-                '█'.repeat(lang[2]) + '░'.repeat(36 - lang[2])
-            } ${(`${lang[1].toFixed(2)}%`).padStart(6)}`
-        )
+
+    type LangPercentage = [language: string, percentage: number]
+    type LangBarData = [language: string, percentage: number, barCount: number]
+
+    const languagePercentages: LangPercentage[] = top5.map(
+        ([lang, codeLines]) => [
+            lang,
+            Math.round((codeLines / totalCode) * 10000) / 100,
+        ]
+    )
+
+    const langBarData: LangBarData[] = languagePercentages.map(
+        ([language, percentage]) => [
+            language,
+            percentage,
+            Math.ceil((percentage * 36) / 100),
+        ]
+    )
+
+    const lines = langBarData.map(([language, percent, bars]) => {
+        const languageLabel = truncate(`${language} `, 12).padStart(12)
+        const barGraph = '█'.repeat(bars).padEnd(36, '░')
+        const percentageLabel = `${percent.toFixed(2)}%`.padStart(6)
+        return `${languageLabel}${barGraph} ${percentageLabel}`
     })
+
     return lines
 }
 
