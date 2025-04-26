@@ -56,15 +56,15 @@ const generateStatsLines = async (
 
 const getRepoLanguage = async (repo: OctoRepo) => {
     if (repo.fork) return {}
-    const languages = await octokit.repos.listLanguages({
+    const { data: languages } = await octokit.repos.listLanguages({
         owner: GH_USERNAME,
         repo: repo.name,
     })
-    return languages.data
+    return languages
 }
 
 const calculateTotalLanguages = async () => {
-    const repos = await octokit.repos.listForAuthenticatedUser({
+    const { data: repos } = await octokit.repos.listForAuthenticatedUser({
         type: 'owner',
         per_page: 100,
         sort: 'updated',
@@ -72,7 +72,7 @@ const calculateTotalLanguages = async () => {
     })
     const langTotal: Record<string, number> = {}
     const reposTotalLanguages = await Promise.all(
-        repos.data
+        repos
             .filter((repo) => !EXCLUDE_REPO.includes(repo.full_name))
             .map((repo) => getRepoLanguage(repo))
     )
@@ -87,13 +87,13 @@ const calculateTotalLanguages = async () => {
 }
 
 const updateGist = async (lines: string) => {
-    let gist: Awaited<ReturnType<typeof octokit.gists.get>>
+    let gist: Awaited<ReturnType<typeof octokit.gists.get>>['data']
     try {
-        gist = await octokit.gists.get({ gist_id: GIST_ID })
+        gist = (await octokit.gists.get({ gist_id: GIST_ID })).data
     } catch (error) {
         throw new Error(`Unable to get gist\n${error}`)
     }
-    const files = gist.data.files
+    const files = gist.files
     if (!files) throw new Error('No files found in the gist')
     const filename = Object.keys(files)[0]
     try {
